@@ -23,26 +23,26 @@
 
     - Être centré (`text-align: center`)
     - Avoir une taille de police de `2.5rem`
-    - Avoir des marges en haut et en bas de `2rem`
+    - Avoir des marges top et bottom de `2rem`
 
 2. Stylisez tous les éléments `<h2>` pour :
 
     - Avoir une taille de police de `1.5rem`
     - Utiliser la couleur de texte `#1e90ff`
-    - Avoir une marge supérieure de `1rem` et une marge inférieure de `0.5rem`
+    - Avoir une marge top de `1rem` et une marge bottom de `0.5rem`
 
 3. Stylisez les éléments avec la classe `.role` pour :
 
     - Être en italique
     - Avoir une taille de police de `0.9rem`
     - Utiliser la couleur de texte `#555`
-    - Avoir une marge inférieure de `0.5rem`
+    - Avoir une marge bottom de `0.5rem`
 
 4. Stylisez les éléments avec la classe `.bio` pour :
     - Avoir une taille de police de `1rem`
     - Utiliser la couleur de texte `#666`
     - Avoir une largeur maximale de `250px`
-    - Avoir une marge inférieure de `1rem`
+    - Avoir une marge bottom de `1rem`
 
 ---
 
@@ -53,7 +53,7 @@
     - Utiliser `justify-content: center`
     - Utiliser un `gap` horizontal de `2rem`
     - Permettre le retour à la ligne sur les petits écrans avec `flex-wrap: wrap`
-    - Ajouter une marge intérieure de `2rem` sur tous les côtés
+    - Ajouter une marge bottom de `2rem` sur tous les côtés
 
 ---
 
@@ -61,7 +61,7 @@
 
 1. Stylisez chaque élément avec la classe `.card` pour :
     - Avoir une couleur de fond `#fff`
-    - Utiliser une marge intérieure de `1.5rem`
+    - Utiliser une marge bottom de `1.5rem`
     - Avoir une largeur fixe de `300px`
     - Avoir des coins arrondis avec `border-radius: 12px`
     - Utiliser une ombre douce :
@@ -89,7 +89,7 @@
     - Avoir une couleur de fond `#1e90ff`
     - Avoir un texte blanc
     - Supprimer la bordure (`border: none`)
-    - Utiliser une marge intérieure : `0.6rem 1.2rem`
+    - Utiliser une marge bottom : `0.6rem 1.2rem`
     - Utiliser une taille de police de `1rem`
     - Utiliser `border-radius: 8px`
     - Changer le curseur de la souris en pointeur
@@ -104,7 +104,7 @@
 1. Stylisez le `<footer>` pour :
     - Centrer le texte
     - Utiliser une taille de police de `0.8rem`
-    - Ajouter une marge intérieure de `1rem`
+    - Ajouter une marge bottom de `1rem`
     - Utiliser une couleur de fond `#eaeaea`
 
 ---

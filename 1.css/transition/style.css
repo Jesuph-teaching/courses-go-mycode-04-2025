@@ -1,0 +1,64 @@
+.btn {
+	outline: none;
+	border: 1px solid black;
+	padding: 0.3rem 1rem;
+	background-color: #4caf50; /* Green */
+	transition: all 1s;
+}
+.btn:hover {
+	color: white;
+	background-color: #0e2d0f; /* Darker green */
+}
+
+.img {
+	transition: transform 0.5s;
+}
+.img:hover {
+	transform: scale(1.5);
+}
+
+img {
+	width: 300px;
+}
+.fade-in {
+	animation: Fade-Animation 3s 1s infinite;
+}
+
+@keyframes Fade-Animation {
+	0% {
+		opacity: 0;
+	}
+	30% {
+		transform: scale(1.4);
+	}
+	60% {
+		transform: scale(1);
+	}
+	100% {
+		opacity: 1;
+	}
+}
+.loader {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	display: inline-block;
+	position: relative;
+	border: 10px solid;
+	box-sizing: border-box;
+	animation: animloader 1s linear infinite alternate;
+}
+@keyframes animloader {
+	0% {
+		border-color: black rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+	}
+	33% {
+		border-color: black black rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+	}
+	66% {
+		border-color: black black black rgba(0, 0, 0, 0);
+	}
+	100% {
+		border-color: black black black black;
+	}
+}
