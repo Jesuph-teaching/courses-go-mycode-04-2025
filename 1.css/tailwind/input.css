@@ -1,0 +1,8 @@
+@import 'tailwindcss';
+@theme {
+	--color-chouaib: #ec4;
+	--breakpoint-xs: 30rem;
+}
+.my-card {
+	@apply bg-blue-300 shadow-2xl shadow-orange-700 h-20 w-full border;
+}
