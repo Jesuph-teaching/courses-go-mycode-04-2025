@@ -1,0 +1,28 @@
+ALGORITHM min_of_4  
+VAR
+    age1:INTEGER;
+    age2:INTEGER;
+    age3:INTEGER;
+    age4:INTEGER;
+    min:INTEGER;
+BEGIN
+    age1:= read("Enter age 1:");
+    age2:= read("Enter age 2:");
+    age3:= read("Enter age 3:");
+    age4:= read("Enter age 4:");
+
+    min:= age1;
+    
+    IF (age2 > min) THEN
+        min:= age2;
+    END_IF
+    IF (age3 < min) THEN
+        min:= age3;
+    END_IF
+    IF (age4 < min) THEN
+        min:= age4;
+    END_IF
+
+    write("The smallest one is ");
+    write(min);
+END

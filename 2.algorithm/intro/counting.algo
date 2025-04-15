@@ -1,0 +1,19 @@
+ALGORITHM counter
+VAR
+    current_count:FLOAT;
+BEGIN
+    current_count:=1;
+    WHILE (current_count<20) DO
+        write(current_count);
+        IF(current_count>10)THEN
+            current_count:= current_count+2;
+        ELSE
+            current_count:= current_count+1;
+        END_IF
+    END_WHILE
+
+
+    FOR current_count FROM 1 TO 20  DO
+        write(current_count);
+    END_FOR
+END

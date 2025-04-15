@@ -1,0 +1,13 @@
+1- Declaration
+    - cards
+    - slots
+
+2- Instructions
+    - pick a card from top
+    - check the color
+        - if color is green 
+            - put it in green slot
+        - if color is blue 
+            - put it in blue slot
+        ... for each color
+    - end

@@ -1,0 +1,25 @@
+ALGORITHM Card-sorting
+VAR
+    cards
+    slots
+    holder
+BEGIN
+    holder := top from cards 
+    REPEAT
+        if holder is green 
+            slots->green := holder
+        if holder is blue 
+            slots->blue := holder
+        if holder is black
+            slots->black := holder
+        if holder is red
+            slots->red := holder
+        if holder is yellow
+            slots->yellow := holder
+        
+        holder := top from cards 
+    UNTIL (holder is empty)
+
+    write( slots )
+    
+END

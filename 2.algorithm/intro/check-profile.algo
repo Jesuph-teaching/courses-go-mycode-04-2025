@@ -1,0 +1,14 @@
+ALGORITHM check_profile
+VAR
+    name:STRING;
+    age:INTEGER;
+BEGIN
+    name:= read("Please enter the name");
+    age:= read("Please enter your age");
+    // checking if the user is allowed to enter
+    IF( name = "Youcef MADADI" OR age >18) THEN
+        write("You can pass");
+    ELSE 
+        write("You aren't allowed to enter")
+    END_IF
+END
