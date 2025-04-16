@@ -1,0 +1,7 @@
+ALGORITHM search_array
+VAR
+    students : ARRAY_OF INTEGER[20];
+BEGIN
+    // read 20 students age
+    // find the student with the age 25 years
+END

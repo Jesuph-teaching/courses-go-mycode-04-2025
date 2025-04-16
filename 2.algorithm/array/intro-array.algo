@@ -1,0 +1,34 @@
+ALGORITHM Intro-array
+VAR
+    students : ARRAY_OF INTEGER[100];
+    i :INTEGER;
+    sum:INTEGER;
+    average:INTEGER;
+BEGIN
+    // how to fill the array of students
+    // we access student 1 by using index 0
+    students[0] :=  read("enter the age of student 1");
+
+    // we access student 2 by using index 1
+    students[1] := read("enter the age of student 2");
+
+    // how to fill an array automatically
+    FOR i FROM 0 TO 99 DO
+        students[i] := read("enter the age of student {i+1}");
+    END_FOR
+    // how to fill an array manually
+    // students:=[12,34,3,6,34,12,14,16]
+
+    // how to use an array
+    // calculate average of ages
+    sum:= 0;
+
+    FOR i FROM 0 TO 99 DO
+        // how to get the value of student in the index (i) { students[i] }
+        sum:= sum + students[i];
+    END_FOR
+
+    average:= sum / 100;
+
+    write("The average age of students {average}");
+END

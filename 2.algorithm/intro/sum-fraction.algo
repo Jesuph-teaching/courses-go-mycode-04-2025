@@ -1,0 +1,15 @@
+ALGORITHM sum_of_n_fraction
+VAR
+    sum:FLOAT;
+    n:INTEGER;
+    i:INTEGER;
+BEGIN
+    n := Read("please enter the N:")
+    sum:= 0;    
+    i:=1;
+    REPEAT
+        sum:= sum + (1/i);
+        i := i +1;
+    WHILE ( i<=n);
+    
+END

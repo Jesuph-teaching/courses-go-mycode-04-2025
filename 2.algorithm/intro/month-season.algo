@@ -1,0 +1,13 @@
+Algorithm Season
+Var
+	month : STRING;
+Begin
+	month:= Read("please enter the month");
+	Switch month
+	    Case 12,1,2: Write("Winter") break;
+	    Case 3,4,5: Write("Spring") break;
+	    Case 6,7,8: Write("Summer") break;
+	    Case 9,10,11: Write("Autumn ") break;
+	    Default: Write("Error")
+	End Switch
+End

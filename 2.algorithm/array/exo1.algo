@@ -1,0 +1,23 @@
+ALGORITHM max_of_array
+VAR
+    tab : ARRAY_OF INTEGER[100];
+    N:INTEGER;
+    max:INTEGER;
+    i:INTEGER;
+    //    number_of_even:INTEGER;
+BEGIN
+    N := read("please enter how many values you are going to enter(less than 100)");
+
+    FOR i FROM 0 TO N-1  DO
+        tab[i] := read("please enter value {i+1}");
+    END_FOR
+
+    max:= tab[0];
+
+    FOR i FROM 1 TO N-1  DO
+        IF (tab[i]>max) THEN
+            max := tab[i];
+        END_IF
+    END_FOR
+    write("The max is : {max}");
+END

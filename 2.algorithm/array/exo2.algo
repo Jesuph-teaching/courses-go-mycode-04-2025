@@ -1,0 +1,22 @@
+ALGORITHM count_even_numbers
+VAR
+    tab : ARRAY_OF INTEGER[100];
+    N:INTEGER;
+    i:INTEGER;
+    number_of_even:INTEGER;
+BEGIN
+    N := read("please enter how many values you are going to enter(less than 100)");
+
+    FOR i FROM 0 TO N-1  DO
+        tab[i] := read("please enter value {i+1}");
+    END_FOR
+
+    number_of_even:=0;
+
+    FOR i FROM 1 TO N-1  DO
+        IF (tab[i] % 2=0) THEN
+            number_of_even:= number_of_even+1;
+        END_IF
+    END_FOR
+    write("there is : {number_of_even} even number");
+END

@@ -1,0 +1,18 @@
+ALGORITHM reverse_array 
+VAR
+    tab : ARRAY_OF INTEGER[100];
+    N:INTEGER;
+    new: ARRAY_OF INTEGER[100];
+BEGIN
+    N := read("please enter how many values you are going to enter(less than 100)");
+
+    FOR i FROM 0 TO N-1  DO
+        tab[i] := read("please enter value {i+1}");
+    END_FOR
+
+    //
+    // last => first place // N-1 => o // N-1-i => i
+    FOR i FROM 1 TO N-1  DO
+        new[i] :=  tab[N-i-1];
+    END_FOR
+END
