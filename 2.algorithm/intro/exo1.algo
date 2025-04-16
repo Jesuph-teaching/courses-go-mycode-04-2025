@@ -1,0 +1,15 @@
+ALGORITHM Is_number_odd_or_even
+VAR
+    number:INTEGER;
+    rest:INTEGER;
+BEGIN
+    number := read("Please enter the number");
+
+    rest := number % 2;
+
+    IF (rest = 0) THEN
+        write("number is even");
+    ELSE
+        write("number is odd");
+    END_IF
+END

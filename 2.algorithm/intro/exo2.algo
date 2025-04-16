@@ -1,0 +1,15 @@
+ALGORITHM check_if_devisable_by_4   
+VAR
+    number:INTEGER;
+    rest: INTEGER;
+BEGIN
+    number := read("Please enter the number");
+
+    rest := number % 4;
+
+    IF (rest= 0 ) THEN
+        write("number is devisable by 4");
+    ELSE
+        write("number is not devisable by 4");
+    END_IF
+END
