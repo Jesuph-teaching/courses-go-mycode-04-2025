@@ -1,0 +1,19 @@
+ALGORITHM search_element 
+VAR
+    tab : ARRAY_OF INTEGER[100];
+    N:INTEGER;
+    i:INTEGER;
+BEGIN
+    N := read("please enter how many values you are going to enter(less than 100)");
+
+    FOR i FROM 0 TO N-1  DO
+        tab[i] := read("please enter value {i+1}");
+    END_FOR
+
+    FOR i FROM 0 TO N-1  DO
+        IF (tab[i]<0) THEN
+            tab[i] := 0;
+        END_IF
+    END_FOR
+
+END

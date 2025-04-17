@@ -1,0 +1,29 @@
+ALGORITHM search_element 
+VAR
+    tab : ARRAY_OF INTEGER[100];
+    N:INTEGER;
+    i:INTEGER;
+    smallest:INTEGER;
+BEGIN
+    N := read("please enter how many values you are going to enter(less than 100)");
+
+    FOR i FROM 0 TO N-1  DO
+        tab[i] := read("please enter value {i+1}");
+    END_FOR
+
+    smallest :=  0;
+
+    FOR i FROM 0 TO N-1   DO
+        IF (tab[i]>0 AND ( tab[i]<smallest OR smallest=0)) THEN
+            smallest:=tab[i];
+        END_IF
+      
+    END_FOR
+
+    IF (smallest>0) THEN
+        write("we have found the smallest positive {smallest}")
+    ELSE 
+        write("we haven't found the smallest positive")
+    END_IF
+
+END
