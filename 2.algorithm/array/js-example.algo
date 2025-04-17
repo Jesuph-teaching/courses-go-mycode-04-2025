@@ -1,0 +1,10 @@
+ALGORITHM algorithm_name
+VAR
+    name: STRING;
+    age:INTEGER;
+    gender:STRING;
+BEGIN
+    name:= "Youcef";
+    age:=27;
+    gender:="male";
+END
