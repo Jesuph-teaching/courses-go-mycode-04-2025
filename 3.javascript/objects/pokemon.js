@@ -36,7 +36,6 @@ const pokemon2 = {
 		return this.hp > 0;
 	},
 	getMove() {
-		//
 		if (Math.random() > 0.5) {
 			return this.moves[0];
 		} else {
