@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<form action="/" method="get" id="">
+			<h2>Contact us</h2>
+			<fieldset>
+				<legend for="email">Email</legend>
+				<input required id="email" type="email" name="email" />
+				<p></p>
+			</fieldset>
+			<fieldset>
+				<legend for="fullName">Full name</legend>
+				<input required id="fullName" type="text" name="fullName" />
+				<p></p>
+			</fieldset>
+			<fieldset>
+				<legend for="phone">Phone number</legend>
+				<input required id="phone" type="tel" name="phone" />
+				<p></p>
+			</fieldset>
+			<fieldset>
+				<legend for="subject">Subject</legend>
+				<select required id="subject" type="text" name="subject">
+					<option value="" selected>- not selected -</option>
+					<option value="request">Request</option>
+					<option value="costumer">Costumer service</option>
+				</select>
+				<p></p>
+			</fieldset>
+			<fieldset>
+				<legend for="message">Message</legend>
+				<textarea
+					required
+					id="message"
+					name="message"
+					rows="6"
+					maxlength="350"
+				></textarea>
+				<p></p>
+			</fieldset>
+			<button>send</button>
+		</form>
+		<script src="./script.js"></script>
+	</body>
+</html>

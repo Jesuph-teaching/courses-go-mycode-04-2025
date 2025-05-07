@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Todo list</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="todo">
+			<section class="todo-top">
+				<h1>Your todo</h1>
+				<form class="input-form">
+					<input
+						type="text"
+						id="input-text"
+						name="todo"
+						placeholder="Add new task"
+					/>
+					<button>+</button>
+				</form>
+			</section>
+			<section class="todo-content">
+				<ul class="todo-list">
+					<p>There is no tasks</p>
+				</ul>
+			</section>
+			<section class="todo-footer">
+				<p>Your remaining todos: <span id="remaining">0</span></p>
+			</section>
+		</div>
+		<script src="./script.js"></script>
+	</body>
+</html>
