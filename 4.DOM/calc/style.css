@@ -1,0 +1,64 @@
+* {
+	box-sizing: border-box;
+}
+:root {
+	--color-button: #2d2c2e;
+	--color-button2: #f4a23c;
+	--color-background: black;
+	--color-text: white;
+}
+.calculator {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(8, 1fr);
+	place-items: center;
+	gap: 6px;
+	max-width: 200px;
+	margin: auto;
+	background-color: var(--color-background);
+	padding: 12px;
+	border-radius: 12px;
+	font-family: sans-serif;
+}
+.display {
+	grid-column: 1 / 5;
+	grid-row: 1 / 4;
+	color: var(--color-text);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: end;
+	align-items: end;
+}
+.button {
+	background-color: var(--color-button);
+	border-radius: 40px;
+	grid-column: span 1;
+	width: 40px;
+	height: 40px;
+	color: var(--color-text);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+.operator {
+	background-color: var(--color-button2);
+}
+.wide {
+	grid-column: span 2;
+	width: 86px;
+}
+.lucide--delete {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	--svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M10 5a2 2 0 0 0-1.344.519l-6.328 5.74a1 1 0 0 0 0 1.481l6.328 5.741A2 2 0 0 0 10 19h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm2 4l6 6m0-6l-6 6'/%3E%3C/svg%3E");
+	background-color: currentColor;
+	-webkit-mask-image: var(--svg);
+	mask-image: var(--svg);
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-size: 100% 100%;
+	mask-size: 100% 100%;
+}
