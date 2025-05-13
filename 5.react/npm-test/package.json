@@ -1,0 +1,21 @@
+{
+	"name": "npm-test",
+	"version": "0.0.1",
+	"description": "This project is meant for teaching new students aboout npm",
+	"keywords": [
+		"react",
+		"npm",
+		"test",
+		"teaching"
+	],
+	"license": "UNLICENSED",
+	"author": "shirogin",
+	"type": "commonjs",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "mkdir src"
+	},
+	"dependencies": {
+		"react": "^19.1.0"
+	}
+}
