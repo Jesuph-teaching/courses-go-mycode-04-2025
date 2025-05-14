@@ -1,0 +1,13 @@
+.dropdown {
+	display: flex;
+	flex-direction: column;
+}
+
+.dropdown-menu {
+	border: 1px solid rgba(0, 0, 0, 0.312);
+	padding: 0;
+	list-style: none;
+}
+.dropdown-menu li {
+	border: 1px solid rgba(0, 0, 0, 0.408);
+}
