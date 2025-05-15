@@ -1,10 +1,9 @@
-import React from 'react';
-
-export default function Profile(props) {
+// <Profile firstName="" => props ={firsName:""}
+export default function Profile({ firstName, lastName, age }) {
 	return (
 		<div>
 			<h3>
-				Hello, {props.firstName} {props.lastName}
+				Hello, {firstName} {lastName}, {age}
 			</h3>
 		</div>
 	);
