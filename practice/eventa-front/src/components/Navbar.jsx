@@ -1,6 +1,5 @@
 import { Link } from 'react-router';
 import useUser from '../hooks/useUser';
-import ThemeSwitch from './ThemeSwitch';
 
 export default function Navbar() {
 	const { logout, user } = useUser();
@@ -13,7 +12,6 @@ export default function Navbar() {
 					</Link>
 				</div>
 				<div className="flex-none flex gap-2">
-					<ThemeSwitch />
 					<div className="dropdown dropdown-end">
 						<div
 							tabIndex={0}
@@ -76,7 +74,7 @@ export default function Navbar() {
 							</div>
 							<ul
 								tabIndex={0}
-								className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+								className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3  p-2 shadow"
 							>
 								<li>
 									<a className="justify-between">
@@ -93,7 +91,7 @@ export default function Navbar() {
 							</ul>
 						</div>
 					) : (
-						<Link to="/sign-in" className="btn btn-primary">
+						<Link to="/auth/sign-in" className="btn btn-primary">
 							login
 						</Link>
 					)}
