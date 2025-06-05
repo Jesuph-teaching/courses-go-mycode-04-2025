@@ -1,5 +1,5 @@
+import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
-import useWeather from './hooks/useWeather';
 const getBackgroundColor = (weather) => {
 	switch (weather) {
 		case 'Clear':
@@ -33,9 +33,25 @@ const getIcon = (weather) => {
 	}
 };
 
-export default function WeatherCard() {
+export default function WeatherCardWithRQ() {
 	const [cityToSearch, setCityToSearch] = useState('');
-	const { data, error, loading, fetchWeather } = useWeather();
+	const { mutate, isPending, error, isError, data } = useMutation({
+		mutationFn: (url) => {
+			return fetch(url).then((response) => {
+				if (response.ok) {
+					return response.json();
+				} else {
+					if (response.status === 400) {
+						throw new Error(
+							'You need to write the name of the city'
+						);
+					} else {
+						throw new Error(response.statusText);
+					}
+				}
+			});
+		},
+	});
 	return (
 		<div className="flex flex-col gap-4 w-full max-w-md">
 			<form
@@ -44,7 +60,7 @@ export default function WeatherCard() {
 					const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityToSearch}&appid=${
 						import.meta.env.VITE_API_KEY
 					}&units=metric`;
-					fetchWeather(url);
+					mutate(url);
 				}}
 				className="w-full flex gap-2"
 			>
@@ -58,13 +74,15 @@ export default function WeatherCard() {
 				/>
 				<button
 					type="submit"
-					disabled={loading}
+					disabled={isPending}
 					className="flex shrink-0 bg-white rounded-full w-12 h-12 justify-center items-center disabled:bg-gray-500"
 				>
 					<span className="icon-[bx--search] w-6 h-6"></span>
 				</button>
 			</form>
-			<p className="text-red-500 text-center">{error}</p>
+			{isError ? (
+				<p className="text-red-500 text-center">{error.message}</p>
+			) : null}
 			<div
 				className={`rounded-xl shadow-xl w-full py-4 px-8 bg-gradient-to-br min-h-96 flex flex-col justify-center items-center gap-4 ${getBackgroundColor(
 					data ? data.weather[0].main : ''
