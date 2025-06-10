@@ -1,7 +1,7 @@
 import http from 'node:http';
 import fs from 'node:fs';
-import dotenv from 'dotenv';
 import { faker } from '@faker-js/faker';
+import dotenv from 'dotenv';
 dotenv.config();
 
 const PORT = process.env.PORT || 3000;
