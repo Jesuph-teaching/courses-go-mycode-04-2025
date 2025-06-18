@@ -1,7 +1,6 @@
 import userModel from '../models/users.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { success } from 'zod/v4';
 export function login(req, res) {
 	res.json({
 		success: true,
@@ -51,19 +50,7 @@ export async function register(req, res) {
 }
 
 export async function checkUser(req, res) {
-	// 1. token in the body
-	//const token = req.body.token;
-	// 2. token in the header
-	const token = req.headers.authorization.split(' ')[1];
-	if (!token) {
-		throw new Error("Token doesn't exist ");
-	}
-
-	const verified = jwt.verify(token, process.env.AUTH_SECRET);
-	if (!verified) {
-		throw new Error('Unverified token used');
-	}
-	const user = await userModel.findById(verified._id).select('-password');
+	const user = req.user;
 	if (!user) {
 		throw new Error('User not found');
 	}
