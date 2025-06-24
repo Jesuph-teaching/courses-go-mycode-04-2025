@@ -16,7 +16,7 @@
     - `services/` for reusable business logic
     - `routes/` for all API endpoints
     - `middleware/` for authentication and role checks
-    - `config/` for MongoDB connection logic
+    - `config/` or `services/` for MongoDB connection logic
 
 ---
 
