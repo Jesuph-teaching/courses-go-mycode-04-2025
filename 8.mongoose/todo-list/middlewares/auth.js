@@ -1,3 +1,4 @@
+import { success } from 'zod/v4';
 import userModel from '../models/users.js';
 import jwt from 'jsonwebtoken';
 
@@ -27,6 +28,17 @@ export async function CheckAuth(req, res, next) {
 			success: false,
 			message: 'Error in validating token',
 			error: err,
+		});
+	}
+}
+
+export async function isAdmin(req, res, next) {
+	if (req.user.role === 'Admin') {
+		next();
+	} else {
+		res.status(401).json({
+			success: false,
+			message: "You are not an admin, you can't access this route",
 		});
 	}
 }

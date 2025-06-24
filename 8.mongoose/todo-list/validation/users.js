@@ -1,6 +1,15 @@
 import { z } from 'zod/v4';
 
-const userSchema = z.object({
+export const loginSchema = z.object({
+	email: z.email('Email must be valid'),
+	password: z
+		.string()
+		.regex(
+			/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/,
+			"Password isn't not strong enough"
+		),
+});
+const userSchema = loginSchema.extend({
 	firstName: z
 		.string()
 		.min(3, 'First name must have at least 3 letters')
@@ -13,13 +22,11 @@ const userSchema = z.object({
 		.number()
 		.min(12, 'User has to be older than 12 years old')
 		.max(100, 'User has to be less than 100 years old'),
-	email: z.email('Email must be valid'),
-	password: z
-		.string()
-		.regex(
-			/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/,
-			"Password isn't not strong enough"
-		),
+});
+
+export const fullUserSchema = userSchema.extend({
+	enabled: z.boolean().optional(),
+	role: z.enum(['Admin', 'User']),
 });
 
 export default userSchema;
