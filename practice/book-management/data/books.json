@@ -1,0 +1,42 @@
+[
+	{
+		"title": "A Song of Ice and Fire",
+		"author": "George R. R. Martin",
+		"price": {
+			"current": 32
+		},
+		"description": "An epic fantasy series that follows the political and magical conflicts among noble families in the Seven Kingdoms of Westeros."
+	},
+	{
+		"title": "1984",
+		"author": "George Orwell",
+		"price": {
+			"current": 18
+		},
+		"description": "A dystopian novel that explores a totalitarian regime under constant surveillance and loss of individuality."
+	},
+	{
+		"title": "To Kill a Mockingbird",
+		"author": "Harper Lee",
+		"price": {
+			"current": 22
+		},
+		"description": "A powerful story about racial injustice and moral growth in the Deep South during the 1930s."
+	},
+	{
+		"title": "The Hobbit",
+		"author": "J.R.R. Tolkien",
+		"price": {
+			"current": 25
+		},
+		"description": "A classic fantasy adventure where Bilbo Baggins sets out on a journey with dwarves to reclaim a stolen treasure from a dragon."
+	},
+	{
+		"title": "The Alchemist",
+		"author": "Paulo Coelho",
+		"price": {
+			"current": 20
+		},
+		"description": "A philosophical novel about a shepherd's journey to discover his personal legend and fulfill his dreams."
+	}
+]

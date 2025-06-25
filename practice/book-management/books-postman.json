@@ -1,0 +1,871 @@
+{
+	"info": {
+		"_postman_id": "11513f3b-0405-4da6-ad2f-f720104d6f13",
+		"name": "Books management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5060370"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const d = pm.response.json();\r",
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(200);\r",
+									"\tconst token = d.token;\r",
+									"    pm.expect(d.success).to.be.true;\r",
+									"\tpm.expect(token).to.not.be.empty;\r",
+									"\tpm.environment.set('token', token);\r",
+									"});\r",
+									"pm.test('User data is not empty', function () {\r",
+									"\tpm.expect(d.data).to.not.be.empty;\r",
+									"});\r",
+									"pm.test('User data contains expected fields', function () {\r",
+									"\tpm.expect(d.data).to.have.contains.keys(\r",
+									"\t\t'name',\r",
+									"\t\t'email',\r",
+									"\t\t'role',\r",
+									"\t\t'_id',\r",
+									"\t\t'createdAt',\r",
+									"\t\t'updatedAt'\r",
+									"\t);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"{{user_name}}\",\r\n    \"email\":\"{{user_email}}\",\r\n    \"password\":\"{{user_password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/register",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"{{user_name}}\",\r\n    \"email\":\"{{user_email}}\",\r\n    \"password\":\"{{user_password}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/register",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "453",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1c5-R0kcfQkSf8WnmxYxPIE2nWJm9Z8\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 10:17:44 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"You have registered\",\n    \"data\": {\n        \"name\": \"Youcef Madadi\",\n        \"email\": \"madadiyoucef2@outlook.com\",\n        \"role\": \"User\",\n        \"_id\": \"685a7b484f9a1e35ed0999fa\",\n        \"createdAt\": \"2025-06-24T10:17:44.740Z\",\n        \"updatedAt\": \"2025-06-24T10:17:44.740Z\"\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODVhN2I0ODRmOWExZTM1ZWQwOTk5ZmEiLCJjcmVhdGVkQXQiOiIyMDI1LTA2LTI0VDEwOjE3OjQ0Ljc5NloiLCJpYXQiOjE3NTA3NjAyNjR9.y1dcGsTm6GPUDVlyCZrB5sYRUi-l5GLkEavZURL5b5E\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const d = pm.response.json();\r",
+									"pm.test('Successful POST request', function () {\r",
+									"\tpm.expect(pm.response.code).to.be.equal(200);\r",
+									"\tpm.expect(d.success).to.be.true;\r",
+									"\tconst token = d.token;\r",
+									"\tpm.expect(token).to.not.be.empty;\r",
+									"\tpm.environment.set('token', token);\r",
+									"});\r",
+									"pm.test('User data is not empty', function () {\r",
+									"\tpm.expect(d.data).to.not.be.empty;\r",
+									"});\r",
+									"pm.test('User data contains expected fields', function () {\r",
+									"\tpm.expect(d.data).to.have.contains.keys(\r",
+									"\t\t'name',\r",
+									"\t\t'email',\r",
+									"\t\t'role',\r",
+									"\t\t'_id',\r",
+									"\t\t'createdAt',\r",
+									"\t\t'updatedAt'\r",
+									"\t);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{user_email}}\",\r\n    \"password\": \"{{user_password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"{{user_email}}\",\r\n    \"password\": \"{{user_password}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/login",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "452",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1c4-7ZoIlzgL7LO9TtZFwHm9edPWMrQ\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 10:17:23 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"You have logged in\",\n    \"data\": {\n        \"_id\": \"685a796d98853dca61e06862\",\n        \"name\": \"Youcef Madadi\",\n        \"email\": \"madadiyoucef1@outlook.com\",\n        \"role\": \"User\",\n        \"createdAt\": \"2025-06-24T10:09:49.889Z\",\n        \"updatedAt\": \"2025-06-24T10:09:49.889Z\"\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODVhNzk2ZDk4ODUzZGNhNjFlMDY4NjIiLCJjcmVhdGVkQXQiOiIyMDI1LTA2LTI0VDEwOjE3OjIzLjY4NFoiLCJpYXQiOjE3NTA3NjAyNDN9.r5QCZC9NdsBEsiJ5H7y81uUPXDnJKWtaw8v9PwQzpbQ\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Check user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const d = pm.response.json();\r",
+									"pm.test('Successful Get user', function () {\r",
+									"\tpm.expect(pm.response.code).to.be.equal(200);\r",
+									"\tpm.expect(d.success).to.be.true;\r",
+									"});\r",
+									"pm.test('User data is not empty', function () {\r",
+									"\tpm.expect(d.data).to.not.be.empty;\r",
+									"});\r",
+									"pm.test('User data contains expected fields', function () {\r",
+									"\tpm.expect(d.data).to.have.contains.keys(\r",
+									"\t\t'name',\r",
+									"\t\t'email',\r",
+									"\t\t'role',\r",
+									"\t\t'_id',\r",
+									"\t\t'createdAt',\r",
+									"\t\t'updatedAt'\r",
+									"\t);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/auth",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Check user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/auth",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "209",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d1-HvaWGRITBj6fYJVHF3ThyAOXpco\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 10:17:02 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"685a796d98853dca61e06862\",\n        \"name\": \"Youcef Madadi\",\n        \"email\": \"madadiyoucef1@outlook.com\",\n        \"role\": \"User\",\n        \"createdAt\": \"2025-06-24T10:09:49.889Z\",\n        \"updatedAt\": \"2025-06-24T10:09:49.889Z\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "books",
+			"item": [
+				{
+					"name": "admin",
+					"item": [
+						{
+							"name": "create book",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const d = pm.response.json();\r",
+											"pm.test('Book created successfully', function () {\r",
+											"\tpm.response.to.have.status(201);\r",
+											"\tpm.expect(d.success).to.be.true;\r",
+											"\tpm.expect(d.data).to.have.contain.keys(\r",
+											"\t\t'_id',\r",
+											"\t\t'title',\r",
+											"\t\t'author',\r",
+											"\t\t'price',\r",
+											"\t\t'stock',\r",
+											"\t\t'description',\r",
+											"\t\t'createdAt',\r",
+											"\t\t'updatedAt'\r",
+											"\t);\r",
+											"    pm.environment.set('bookId', d.data._id);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"The Alchemist\",\r\n    \"author\": \"Paulo Coelho\",\r\n    \"price\": {\r\n        \"current\": 20\r\n    },\r\n    \"description\": \"A philosophical novel about a shepherd's journey to discover his personal legend and fulfill his dreams.\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/books",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"books"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update book",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const d = pm.response.json();\r",
+											"pm.test('Book created successfully', function () {\r",
+											"\tpm.response.to.have.status(200);\r",
+											"\tpm.expect(d.success).to.be.true;\r",
+											"\tpm.expect(d.data).to.have.contain.keys(\r",
+											"\t\t'_id',\r",
+											"\t\t'title',\r",
+											"\t\t'author',\r",
+											"\t\t'price',\r",
+											"\t\t'stock',\r",
+											"\t\t'description',\r",
+											"\t\t'createdAt',\r",
+											"\t\t'updatedAt'\r",
+											"\t);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"description\":\"One of the books From the series of Game of thrones\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/books/{{bookId}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"books",
+										"{{bookId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete book",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const d = pm.response.json();\r",
+											"pm.test('Book created successfully', function () {\r",
+											"\tpm.response.to.have.status(200);\r",
+											"\tpm.expect(d.success).to.be.true;\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/books/{{bookId}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"books",
+										"{{bookId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "get books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/books",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get book by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/books/{{bookId}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"books",
+								"{{bookId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "get users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/users",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/users/{{userId}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"{{user_name}}\",\r\n    \"email\":\"{{user_email}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/users/{{userId}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/users/{{userId}}/books",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create a user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"{{user_name}}\",\r\n    \"email\":\"{{user_email}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/users",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "admin",
+					"item": [
+						{
+							"name": "get order by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/orders/admin/{{orderId}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"orders",
+										"admin",
+										"{{orderId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all orders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/orders/admin",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"orders",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update order status",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\": \"delivered\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/orders/admin/{{orderId}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"orders",
+										"admin",
+										"{{orderId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete order",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/orders/admin/{{orderId}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"orders",
+										"admin",
+										"{{orderId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "get my orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/orders",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "order books",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const d = pm.response.json();\r",
+									"pm.test('Order created successfully', function () {\r",
+									"\tpm.response.to.have.status(201);\r",
+									"\tpm.expect(d.success).to.be.true;\r",
+									"\tpm.expect(d.data).to.have.contain.keys(\r",
+									"\t\t'_id',\r",
+									"\t\t'books',\r",
+									"\t\t'totalPrice',\r",
+									"\t\t'createdAt',\r",
+									"\t\t'updatedAt'\r",
+									"\t);\r",
+									"\tpm.environment.set('orderId', d.data._id);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"books\": [\r\n        {\r\n            \"bookId\": \"685baac6a75bf3214fdca7bd\",\r\n            \"quantity\": 2\r\n        },{\r\n            \"bookId\":\"685baad6a75bf3214fdca7c0\",\r\n            \"quantity\":4\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/orders",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	}
+}
