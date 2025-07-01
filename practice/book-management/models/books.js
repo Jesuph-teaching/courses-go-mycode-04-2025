@@ -21,8 +21,16 @@ const bookSchema = new Schema(
 			},
 		},
 		stock: {
-			type: Number,
-			default: 0,
+			physical: {
+				type: Number,
+				default: 0,
+			},
+			audio: {
+				type: String, // link to audio
+			},
+			eBook: {
+				type: String, // link to pdf
+			},
 		},
 		description: {
 			type: String,
@@ -30,6 +38,12 @@ const bookSchema = new Schema(
 		},
 		cover: {
 			type: String,
+		},
+
+		keywords: [{ type: String }],
+		category: {
+			type: Schema.Types.ObjectId,
+			ref: 'categories',
 		},
 	},
 	{

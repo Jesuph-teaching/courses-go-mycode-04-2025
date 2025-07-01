@@ -21,6 +21,22 @@ const userSchema = new Schema(
 			enum: ['Admin', 'User'],
 			default: 'User',
 		},
+		isEmailVerified: {
+			type: Boolean,
+			default: false,
+		},
+		favoriteBooks: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'books',
+			},
+		],
+		readBooks: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'books',
+			},
+		],
 	},
 	{
 		toJSON: {

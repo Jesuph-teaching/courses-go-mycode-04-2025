@@ -16,6 +16,86 @@ export async function getBooks(req, res) {
 		});
 	}
 }
+export async function getRecommendedBooks(req, res) {
+	try {
+		const books = await bookModel.find();
+		res.status(StatusCodes.OK).json({
+			success: true,
+			message: 'Books fetched successfully',
+			data: books,
+		});
+	} catch (error) {
+		res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+			success: false,
+			message: 'Failed to fetch books',
+			error: error.message || error,
+		});
+	}
+}
+export async function getNewArrivalBooks(req, res) {
+	try {
+		const { limit = 20 } = req.query;
+		const books = await bookModel
+			.find()
+			.sort({ createdAt: -1 })
+			.limit(Number(limit));
+		res.status(StatusCodes.OK).json({
+			success: true,
+			message: 'Books fetched successfully',
+			data: books,
+		});
+	} catch (error) {
+		res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+			success: false,
+			message: 'Failed to fetch books',
+			error: error.message || error,
+		});
+	}
+}
+export async function getRecentlyReadBooks(req, res) {
+	try {
+		const booksIds = req.user.readBooks;
+		if (!booksIds || booksIds.length === 0) {
+			throw new Error("You didn't read any book yet");
+		}
+		const books = await bookModel.find({
+			_id: { $in: booksIds },
+		});
+		res.status(StatusCodes.OK).json({
+			success: true,
+			message: 'Books fetched successfully',
+			data: books,
+		});
+	} catch (error) {
+		res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+			success: false,
+			message: 'Failed to fetch books',
+			error: error.message || error,
+		});
+	}
+}
+export async function getFavoriteBooks(req, res) {
+	try {
+		const booksIds = req.user.favoriteBooks;
+		if (!booksIds || booksIds.length === 0) {
+			throw new Error("You don't have favorite books yet");
+		}
+		const books = await bookModel.find({
+			_id: { $in: booksIds },
+		});
+		res.status(StatusCodes.OK).json({
+			success: true,
+			message: 'Favorite Books fetched successfully',
+			data: books,
+		});
+	} catch (error) {
+		res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+			success: false,
+			message: 'Failed to fetch books',
+			error: error.message || error,
+		});
+	}
+}
 export async function createBook(req, res) {
 	try {
 		const book = await bookModel.create(req.body);

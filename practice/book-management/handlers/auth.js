@@ -3,6 +3,8 @@ import { StatusCodes } from 'http-status-codes';
 import userModel from '../models/users.js';
 import jwt from 'jsonwebtoken';
 import transporter from '../services/email.js';
+import { SendVerificationEmail } from '../utils/emailVerification.js';
+import sessionModel from '../models/Session.js';
 
 export async function login(req, res) {
 	try {
@@ -48,23 +50,7 @@ export async function register(req, res) {
 		};
 		const token = jwt.sign(userInfo, process.env.AUTH_SECRET);
 		createdUser.password = undefined; // remove password from the response
-		transporter
-			.sendMail({
-				from: process.env.EMAIL_USERNAME,
-				to: createdUser.email,
-				subject: 'New account at todo.mycode',
-				//text:''
-				html: `
-			<h1>Welcome</h1>
-			<p>Hello ${createdUser.firstName} ${createdUser.lastName} to our website</p>
-			`,
-			})
-			.then((result) => {
-				console.log(result);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
+		SendVerificationEmail(createdUser);
 		res.status(StatusCodes.OK).json({
 			success: true,
 			message: 'You have registered',
@@ -104,4 +90,35 @@ export async function checkUser(req, res) {
 		success: true,
 		data: user,
 	});
+}
+
+export async function verifyEmail(req, res) {
+	try {
+		// here
+		const { otp } = req.body;
+		const session = await sessionModel.findOne({
+			userId: req.user._id,
+			sessionType: 'email',
+		});
+		if (!session) {
+			// or if createdAt surpass 5min
+			throw new Error('The session has expired');
+		}
+		if (session.password !== otp) {
+			throw new Error('OTP code is wrong');
+		}
+		req.user.isEmailVerified = true;
+		await req.user.save();
+		await session.deleteOne();
+		res.json({
+			success: true,
+			message: 'User email is verified successfully',
+		});
+	} catch (error) {
+		res.status(400).json({
+			success: false,
+			message: 'Failed to verify the email',
+			error: error.message,
+		});
+	}
 }

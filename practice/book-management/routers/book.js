@@ -4,6 +4,10 @@ import {
 	deleteBook,
 	getBookById,
 	getBooks,
+	getFavoriteBooks,
+	getNewArrivalBooks,
+	getRecentlyReadBooks,
+	getRecommendedBooks,
 	updateBook,
 } from '../handlers/books.js';
 import { CheckAuth, isAdmin } from '../middlewares/auth.js';
@@ -20,6 +24,11 @@ booksRouter
 	.route('/')
 	.get(getBooks)
 	.post(CheckAuth, isAdmin, validateBodySchema(bookSchema), createBook);
+
+booksRouter.route('/recommended').get(getRecommendedBooks);
+booksRouter.route('/new-arrival').get(getNewArrivalBooks);
+booksRouter.route('/recently-read').get(CheckAuth, getRecentlyReadBooks);
+booksRouter.route('/favorite').get(CheckAuth, getFavoriteBooks);
 
 booksRouter
 	.route('/:id')
