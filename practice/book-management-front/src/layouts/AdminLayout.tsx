@@ -1,5 +1,7 @@
-import { Outlet } from 'react-router';
+import { Navigate, Outlet } from 'react-router';
 import useUser from '../hooks/useUser';
+import Fallback from '../components/Loadings/Fallback';
+import { Suspense } from 'react';
 
 export default function AdminLayout() {
 	const { isLoggedIn, isAdmin } = useUser();
@@ -12,7 +14,9 @@ export default function AdminLayout() {
 
 	return (
 		<>
-			<Outlet />
+			<Suspense fallback={<Fallback />}>
+				<Outlet />
+			</Suspense>
 		</>
 	);
 }

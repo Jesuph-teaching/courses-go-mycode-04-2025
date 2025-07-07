@@ -1,5 +1,7 @@
 import { Navigate, Outlet } from 'react-router';
 import useUser from '../hooks/useUser';
+import { Suspense } from 'react';
+import Fallback from '../components/Loadings/Fallback';
 
 export default function AppLayout() {
 	const { isLoggedIn } = useUser();
@@ -9,7 +11,9 @@ export default function AppLayout() {
 
 	return (
 		<>
-			<Outlet />
+			<Suspense fallback={<Fallback />}>
+				<Outlet />
+			</Suspense>
 		</>
 	);
 }

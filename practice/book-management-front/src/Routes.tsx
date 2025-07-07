@@ -10,10 +10,10 @@ const Read = lazy(() => import('./pages/Read'));
 const MyShelf = lazy(() => import('./pages/MyShelf'));
 const ContributeBook = lazy(() => import('./pages/ContributeBook'));
 // Authentication pages
-const Login = lazy(() => import('./pages/Login'));
-const Register = lazy(() => import('./pages/Register'));
-const ResetPassword = lazy(() => import('./pages/ResetPassword'));
-const ChangePassword = lazy(() => import('./pages/ChangePassword'));
+const Login = lazy(() => import('./pages/Auth/Login'));
+const Register = lazy(() => import('./pages/Auth/Register'));
+const ResetPassword = lazy(() => import('./pages/Auth/ResetPassword'));
+const ChangePassword = lazy(() => import('./pages/Auth/ChangePassword'));
 
 // Layouts
 const AuthLayout = lazy(() => import('./layouts/AuthLayout'));

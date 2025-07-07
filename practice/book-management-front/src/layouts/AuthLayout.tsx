@@ -1,5 +1,8 @@
-import { Outlet } from 'react-router';
+import { Navigate, Outlet } from 'react-router';
 import useUser from '../hooks/useUser';
+import { Suspense } from 'react';
+import Fallback from '../components/Loadings/Fallback';
+
 export default function AuthLayout() {
 	const { isLoggedIn } = useUser();
 	if (isLoggedIn) {
@@ -11,7 +14,9 @@ export default function AuthLayout() {
 			<div className="card bg-base-200 my-auto w-lg shadow-xl">
 				<div className="card-body flex-col items-center justify-center gap-4">
 					<img src="/logo.png" alt="logo" className="w-36 mb-8" />
-					<Outlet />
+					<Suspense fallback={<Fallback />}>
+						<Outlet />
+					</Suspense>
 				</div>
 			</div>
 		</div>
