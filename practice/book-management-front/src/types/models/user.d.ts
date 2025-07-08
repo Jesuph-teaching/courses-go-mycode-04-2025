@@ -6,8 +6,9 @@ declare interface LoginUserI {
 }
 
 declare interface RegisterUserI extends LoginUserI {
-	firstName: string;
-	lastName: string;
+	/* firstName: string;
+	lastName: string; */
+	name: string;
 }
 declare interface BasicUserI extends RegisterUserI {
 	role: USER_TYPES;
@@ -18,7 +19,7 @@ declare interface BasicUserI extends RegisterUserI {
 		listened: string[];
 	};
 }
-declare interface UserI extends BasicUserI {
+declare interface UserI extends Omit<BasicUserI, 'password'> {
 	_id: string;
 	createdAt: string;
 	updatedAt: string;

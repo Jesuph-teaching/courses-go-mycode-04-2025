@@ -41,8 +41,11 @@
 :root {
 	font-family: 'Inter', sans-serif;
 }
+html {
+	@apply w-full;
+}
 body {
-	@apply flex flex-col relative;
+	@apply relative flex w-full flex-col;
 }
 #bg-image {
 	position: fixed;
@@ -57,7 +60,7 @@ body {
 	}
 }
 #root {
-	@apply w-full flex flex-col overflow-auto h-screen;
+	@apply flex h-screen w-full flex-col overflow-auto;
 }
 * {
 	@apply box-border;

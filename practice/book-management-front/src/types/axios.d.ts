@@ -1,5 +1,5 @@
 // axios.d.ts
-import { z } from 'zod/v4';
+import { z } from 'zod';
 import 'axios';
 
 declare module 'axios' {

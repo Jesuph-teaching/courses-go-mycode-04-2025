@@ -21,9 +21,9 @@ export default function LoggedInProvider({ children }: { children: React.ReactNo
 			}
 		},
 	});
-	if (isLoading) {
+	/* if (isLoading) {
 		return <Fallback />;
-	}
+	} */
 	return (
 		<>
 			<Background />

@@ -11,7 +11,7 @@ export default function AuthLayout() {
 
 	return (
 		<div className="w-full h-full overflow-auto py-8 flex items-center flex-col">
-			<div className="card bg-base-200 my-auto w-lg shadow-xl">
+			<div className="card bg-base-100 my-auto w-lg shadow-xl">
 				<div className="card-body flex-col items-center justify-center gap-4">
 					<img src="/logo.png" alt="logo" className="w-36 mb-8" />
 					<Suspense fallback={<Fallback />}>

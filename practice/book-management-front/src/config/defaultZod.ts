@@ -1,4 +1,4 @@
-import { type ZodType, z } from 'zod/v4';
+import { type ZodType, z } from 'zod';
 
 export { z };
 type KeysOfType<T extends object> = Exclude<keyof T, symbol | number>;

@@ -12,7 +12,7 @@ const userSlice = createSlice({
 		login: (state, action: { payload: UserI }) => {
 			state.user = action.payload;
 			state.isLoggedIn = true;
-			state.isAdmin = action.payload.role === 'Admin';
+			state.isAdmin = true; // action.payload.role === 'Admin';
 		},
 		logout: (state) => {
 			state.user = null;
