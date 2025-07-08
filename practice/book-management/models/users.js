@@ -3,7 +3,11 @@ import bcrypt from 'bcrypt';
 
 const userSchema = new Schema(
 	{
-		name: {
+		firstName: {
+			type: String,
+			required: true,
+		},
+		lastName: {
 			type: String,
 			required: true,
 		},
@@ -25,18 +29,32 @@ const userSchema = new Schema(
 			type: Boolean,
 			default: false,
 		},
-		favoriteBooks: [
-			{
-				type: Schema.Types.ObjectId,
-				ref: 'books',
-			},
-		],
-		readBooks: [
-			{
-				type: Schema.Types.ObjectId,
-				ref: 'books',
-			},
-		],
+		books: {
+			favorite: [
+				{
+					type: Schema.Types.ObjectId,
+					ref: 'books',
+				},
+			],
+			borrowed: [
+				{
+					type: Schema.Types.ObjectId,
+					ref: 'books',
+				},
+			],
+			read: [
+				{
+					type: Schema.Types.ObjectId,
+					ref: 'books',
+				},
+			],
+			listened: [
+				{
+					type: Schema.Types.ObjectId,
+					ref: 'books',
+				},
+			],
+		},
 	},
 	{
 		toJSON: {

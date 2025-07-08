@@ -88,6 +88,7 @@ export async function checkUser(req, res) {
 	}
 	res.json({
 		success: true,
+		message: 'User is authenticated',
 		data: user,
 	});
 }
@@ -108,8 +109,7 @@ export async function verifyEmail(req, res) {
 			throw new Error('OTP code is wrong');
 		}
 		req.user.isEmailVerified = true;
-		await req.user.save();
-		await session.deleteOne();
+		await Promise.all([req.user.save(), session.deleteOne()]);
 		res.json({
 			success: true,
 			message: 'User email is verified successfully',
