@@ -4,16 +4,17 @@ export const loginSchema = z.object({
 	email: z.email('Email must be valid'),
 	password: z
 		.string()
-		.regex(
-			/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/,
-			"Password isn't not strong enough"
-		),
+		.regex(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/, "Password isn't not strong enough"),
 });
 const userSchema = loginSchema.extend({
-	name: z
+	firstName: z
 		.string()
-		.min(3, 'Full name must have at least 3 letters')
-		.max(70, 'Full name must have at most 70 letters'),
+		.min(3, 'First name must have at least 3 letters')
+		.max(70, 'First name must have at most 70 letters'),
+	lastName: z
+		.string()
+		.min(3, 'Last name must have at least 3 letters')
+		.max(70, 'Last name must have at most 70 letters'),
 });
 
 export const fullUserSchema = userSchema.extend({

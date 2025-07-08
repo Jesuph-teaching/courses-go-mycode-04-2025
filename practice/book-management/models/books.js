@@ -45,6 +45,10 @@ const bookSchema = new Schema(
 			type: Schema.Types.ObjectId,
 			ref: 'categories',
 		},
+		contributedBy: {
+			type: Schema.Types.ObjectId,
+			ref: 'users',
+		},
 	},
 	{
 		toJSON: {
@@ -54,6 +58,12 @@ const bookSchema = new Schema(
 			versionKey: false,
 		},
 		timestamps: true,
+	}
+);
+bookSchema.index(
+	{ title: 'text', author: 'text', description: 'text', keywords: 'text' },
+	{
+		name: 'search_index',
 	}
 );
 

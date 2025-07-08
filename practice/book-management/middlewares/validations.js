@@ -13,10 +13,12 @@ export function validateBodySchema(schema) {
 		}
 	};
 }
+
 export function validateQuerySchema(schema) {
 	return async function (req, res, next) {
 		const parsed = schema.safeParse(req.query);
 		if (parsed.success) {
+			req.parsedQuery = parsed.data;
 			next();
 		} else {
 			res.status(400).json({

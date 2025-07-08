@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-
+mongoose.set('debug', true);
 export async function connectDB() {
 	return mongoose
 		.connect(process.env.MONGODB_URI, {
