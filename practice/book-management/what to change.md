@@ -3,16 +3,20 @@
 -   [x] in Sign up(Registration) send OTP code
 -   [x] User must have a field that verify if his email is verified
 -   [ ] list of books by type
-    -   [ ] New Arrivals
+    -   [x] New Arrivals
     -   [ ] Recommendation
-    -   [ ] Recently read
--   [ ] user has favorite list
--   [ ] user can borrow a book from the library
--   [ ] user can rate books
--   [ ] User can search for specific books using:
-    -   [ ] search by title, keywords
-    -   [ ] filter by category
--   [ ] user can see and track his books
+    -   [x] Recently read
+    -   [x] Favorite
+    -   [x] Borrowed
+    -   [x] Listened
+-   [x] user has favorite list
+-   [x] user can borrow a book from the library
+-   [x] user can rate books
+-   [x] User can search for specific books using:
+    -   [x] search by title, keywords
+    -   [x] filter by category
+-   [x] user can see and track his books
 -   [ ] user can put notes while reading the books
--   [ ] the books can be in multiple types (Physical , E-book, Audio book)
--   [ ] user can contribute a book
+-   [x] user can upload e-books and audio books
+-   [x] the books can be in multiple types (Physical , E-book, Audio book)
+-   [x] user can contribute a book
