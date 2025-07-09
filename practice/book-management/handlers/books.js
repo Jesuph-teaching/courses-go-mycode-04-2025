@@ -30,16 +30,50 @@ export async function getBooks(req, res) {
 }
 export async function getRecommendedBooks(req, res) {
 	try {
-		const books = await bookModel.find();
+		const { limit, page } = req.parsedQuery;
+
+		const books = await bookModel.aggregate([
+			{
+				$lookup: {
+					from: 'ratings',
+					localField: '_id',
+					foreignField: 'bookId',
+					as: 'ratings',
+				},
+			},
+			{
+				$addFields: {
+					rate: {
+						$avg: '$ratings.rating',
+					},
+				},
+			},
+			{
+				$project: {
+					ratings: 0,
+				},
+			},
+			{
+				$sort: {
+					rate: -1,
+				},
+			},
+			{
+				$skip: (page - 1) * limit,
+			},
+			{
+				$limit: limit,
+			},
+		]);
 		res.status(StatusCodes.OK).json({
 			success: true,
-			message: 'Books fetched successfully',
+			message: 'Books fetched recommended successfully',
 			data: books,
 		});
 	} catch (error) {
 		res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
 			success: false,
-			message: 'Failed to fetch books',
+			message: 'Failed to fetch recommended books',
 			error: error.message || error,
 		});
 	}

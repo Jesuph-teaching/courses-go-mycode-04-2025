@@ -2,9 +2,9 @@
 
 -   [x] in Sign up(Registration) send OTP code
 -   [x] User must have a field that verify if his email is verified
--   [ ] list of books by type
+-   [x] list of books by type
     -   [x] New Arrivals
-    -   [ ] Recommendation
+    -   [x] Recommendation
     -   [x] Recently read
     -   [x] Favorite
     -   [x] Borrowed
