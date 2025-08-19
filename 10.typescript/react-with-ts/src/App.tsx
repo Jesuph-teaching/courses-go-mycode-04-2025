@@ -9,6 +9,7 @@ export default function App() {
 			firstName: 'Youcef',
 			lastName: 'Madadi',
 			age: 27,
+			id: 'user-1',
 		},
 	]);
 	return (
@@ -16,6 +17,7 @@ export default function App() {
 			<div className="grid grid-cols-2 xl:grid-cols-3 container mx-auto gap-4">
 				{users.map((user) => (
 					<ProfileCard
+						key={user.id}
 						age={user.age}
 						firstName={user.firstName}
 						lastName={user.lastName}

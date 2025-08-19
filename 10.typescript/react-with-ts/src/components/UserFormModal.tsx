@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { type UserI } from '../types/user';
+import type { BaseUserI, UserI } from '../types/user';
 
 type Props = {
 	onCreateUser: (user: UserI) => void;
@@ -10,7 +10,7 @@ type Props = {
     > open modal </button> 
 */
 export default function UserFormModal({ onCreateUser }: Props) {
-	const [user, setUser] = useState<UserI>({
+	const [user, setUser] = useState<BaseUserI>({
 		firstName: '',
 		lastName: '',
 		age: 18,
@@ -35,7 +35,10 @@ export default function UserFormModal({ onCreateUser }: Props) {
 					}}
 					onSubmit={(e) => {
 						e.preventDefault();
-						onCreateUser(user);
+						onCreateUser({
+							...user,
+							id: Date.now().toString(),
+						});
 						const modal = document.getElementById(
 							'my_modal_3'
 						) as HTMLDialogElement | null;
