@@ -25,7 +25,7 @@ import {
 	validateParamsSchema,
 	validateQuerySchema,
 } from '../middlewares/validations.js';
-import { filterSchema, idParamsSchema } from '../validation/utils.js';
+import { filterSchema, idParamsSchema, paginationSchema } from '../validation/utils.js';
 import { bookSchema } from '../validation/book.js';
 import { ratingSchema } from '../validation/rate.js';
 
@@ -37,7 +37,7 @@ booksRouter
 	.post(CheckAuth, isAdmin, validateBodySchema(bookSchema), createBook);
 
 booksRouter.route('/contribute').post(CheckAuth, validateBodySchema(bookSchema), contributeBook);
-booksRouter.route('/recommended').get(getRecommendedBooks);
+booksRouter.route('/recommended').get(validateQuerySchema(paginationSchema), getRecommendedBooks);
 booksRouter.route('/new-arrival').get(getNewArrivalBooks);
 
 booksRouter.route('/read').all(CheckAuth).get(getRecentlyReadBooks);
